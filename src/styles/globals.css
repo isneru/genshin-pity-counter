@@ -1,3 +1,7 @@
 @tailwind components;
 @tailwind base;
 @tailwind utilities;
+
+body {
+  @apply text-white bg-zinc-900;
+}
