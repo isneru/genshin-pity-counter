@@ -28,7 +28,7 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
   async function createUser(data: CredentialsProps) {
     try {
       axios
-        .post(`${process.env.APP_URL || "https://localhost:3000/"}api/createUser`, JSON.stringify(data), {
+        .post(`${process.env.NEXT_PUBLIC_APP_URL || "https://localhost:3000/"}api/createUser`, JSON.stringify(data), {
           headers: {
             "Content-Type": "application/json"
           }
