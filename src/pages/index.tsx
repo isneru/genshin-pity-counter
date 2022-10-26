@@ -1,16 +1,34 @@
 import type { NextPage } from "next"
-import { FormEvent, useState } from "react"
+import { useState } from "react"
 
 interface CredentialsProps {
-  username: string
+  name: string
   gameUid: number
 }
 
 const Home: NextPage = () => {
-  const [credentials, setCredentials] = useState<CredentialsProps>({ username: "", gameUid: 0 })
+  const [credentials, setCredentials] = useState<CredentialsProps>({ name: "", gameUid: 0 })
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
+  async function createUser(data: CredentialsProps) {
+    try {
+      fetch("http://localhost:3000/api/create", {
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST"
+      }).then(() => setCredentials({ name: "neru", gameUid: 1 }))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleSubmit = async (data: CredentialsProps) => {
+    try {
+      createUser(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -18,16 +36,21 @@ const Home: NextPage = () => {
       <div className="text-2xl font-bold">
         <h1>Update your pity number easily!</h1>
       </div>
-      <form className="flex flex-col items-stretch w-full max-w-[400px] mt-10 gap-6" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col items-stretch w-full max-w-[400px] mt-10 gap-6"
+        onSubmit={e => {
+          e.preventDefault()
+          handleSubmit(credentials)
+        }}>
         <div className="font-semibold flex flex-col gap-2">
-          <label htmlFor="username" className="font-semibold">
+          <label htmlFor="name" className="font-semibold">
             Username
           </label>
           <input
             onChange={e => setCredentials({ ...credentials, [e.currentTarget.name]: e.currentTarget.value })}
-            name="username"
+            name="name"
             type="text"
-            id="username"
+            id="name"
             className="py-4 px-3 h-12 rounded bg-slate-800 w-full focus:outline-none focus:ring-2 ring-pink-300"
           />
         </div>
