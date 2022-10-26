@@ -1,8 +1,7 @@
-import axios from "axios"
 import type { GetServerSideProps, NextPage } from "next"
 import { useRouter } from "next/router"
 import { useState } from "react"
-import { prisma } from "service"
+import { api, prisma } from "service"
 
 interface DataProps {
   users: {
@@ -27,8 +26,8 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
 
   async function createUser(data: CredentialsProps) {
     try {
-      axios
-        .post(`${process.env.NEXT_PUBLIC_APP_URL || "https://localhost:3000/"}api/createUser`, JSON.stringify(data), {
+      api
+        .post("/createUser", JSON.stringify(data), {
           headers: {
             "Content-Type": "application/json"
           }
