@@ -3,7 +3,11 @@ module.exports = {
   mode: "jit",
   content: ["./**/*.tsx"],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        mainblue: "#0E0D17"
+      }
+    }
   },
   plugins: []
 }

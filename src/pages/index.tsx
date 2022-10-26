@@ -1,36 +1,45 @@
-import type { NextPage } from "next"
+import axios from "axios"
+import type { GetServerSideProps, NextPage } from "next"
+import { useRouter } from "next/router"
 import { useState } from "react"
+import { prisma } from "service"
+
+interface DataProps {
+  users: {
+    id: string
+    name: string
+    gameUid: number
+  }[]
+}
 
 interface CredentialsProps {
   name: string
   gameUid: number
 }
 
-const Home: NextPage = () => {
+const Home: NextPage<DataProps> = ({ users }: DataProps) => {
   const [credentials, setCredentials] = useState<CredentialsProps>({ name: "", gameUid: 0 })
+  const router = useRouter()
+
+  const refreshData = () => {
+    router.replace(router.asPath)
+  }
 
   async function createUser(data: CredentialsProps) {
     try {
-      fetch("http://localhost:3000/api/create", {
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        },
-        method: "POST"
-      }).then(() => setCredentials({ name: "neru", gameUid: 1 }))
+      axios
+        .post("http://localhost:3000/api/createUser", JSON.stringify(data), {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        .then(() => {
+          refreshData()
+        })
     } catch (error) {
       console.log(error)
     }
   }
-
-  const handleSubmit = async (data: CredentialsProps) => {
-    try {
-      createUser(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center">
       <div className="text-2xl font-bold">
@@ -40,7 +49,7 @@ const Home: NextPage = () => {
         className="flex flex-col items-stretch w-full max-w-[400px] mt-10 gap-6"
         onSubmit={e => {
           e.preventDefault()
-          handleSubmit(credentials)
+          createUser(credentials)
         }}>
         <div className="font-semibold flex flex-col gap-2">
           <label htmlFor="name" className="font-semibold">
@@ -51,7 +60,7 @@ const Home: NextPage = () => {
             name="name"
             type="text"
             id="name"
-            className="py-4 px-3 h-12 rounded bg-slate-800 w-full focus:outline-none focus:ring-2 ring-pink-300"
+            className="py-4 px-3 h-12 rounded bg-slate-900 w-full focus:outline-none focus:ring-2 ring-pink-300"
           />
         </div>
         <div className="font-semibold flex flex-col gap-2">
@@ -63,7 +72,7 @@ const Home: NextPage = () => {
             name="gameUid"
             type="text"
             id="gameUid"
-            className="py-4 px-3 h-12 rounded bg-slate-800 w-full focus:outline-none focus:ring-2 ring-pink-300"
+            className="py-4 px-3 h-12 rounded bg-slate-900 w-full focus:outline-none focus:ring-2 ring-pink-300"
           />
         </div>
         <button
@@ -72,8 +81,38 @@ const Home: NextPage = () => {
           Sign Up
         </button>
       </form>
+      <ul className="mt-14 flex flex-col items-stretch w-full max-w-[400px] max-h-[40vh] overflow-y-auto gap-4">
+        {users.map(user => (
+          <li key={user.id} className="bg-slate-900 px-4 py-3 rounded-sm flex gap-2">
+            <div className="flex-1 text-center">
+              <span>{user.name}</span>
+            </div>
+            <div className="w-[1px] h-full bg-white/20" />
+            <div className="flex-1 text-center">
+              <span>UID {user.gameUid}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
 
 export default Home
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const users = await prisma.user.findMany({
+    select: {
+      id: true,
+      name: true,
+      gameUid: true,
+      wishes: true
+    }
+  })
+
+  return {
+    props: {
+      users
+    }
+  }
+}
