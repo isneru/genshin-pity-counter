@@ -1,5 +1,9 @@
 import { PrismaClient } from "@prisma/client"
 
-const prisma = new PrismaClient()
+let prisma: PrismaClient | null = null
+
+if (typeof window === "undefined") {
+  prisma = new PrismaClient()
+}
 
 export { prisma }
