@@ -5,14 +5,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { name, gameUid } = req.body
 
   try {
-    const user = await prisma.user.create({
+    const user = await prisma!.user.create({
       data: {
         name,
         gameUid
       }
     })
 
-    const updatedUser = await prisma.user.update({
+    const updatedUser = await prisma!.user.update({
       data: {
         wishes: {
           create: {

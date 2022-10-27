@@ -100,7 +100,7 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const users = await prisma?.user.findMany({
+  const users = await prisma!.user.findMany({
     select: {
       id: true,
       name: true,
