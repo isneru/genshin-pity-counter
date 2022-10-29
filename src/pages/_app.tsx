@@ -1,8 +1,14 @@
+import { Navbar } from "components"
 import type { AppProps } from "next/app"
 import "styles/globals.css"
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+  return (
+    <>
+      <Navbar />
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 export default MyApp
