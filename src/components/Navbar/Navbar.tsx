@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export const Navbar = () => {
   return (
-    <header className="absolute top-0 px-6 h-20 w-full bg-slate-900 flex justify-center sm:justify-between items-center">
+    <header className="px-6 h-20 w-full bg-slate-900 flex justify-center sm:justify-between items-center">
       <div className="flex items-center">
         <Link href="/">
           <Image priority width={150} height={45} src="/logo.svg" alt="Logo" />

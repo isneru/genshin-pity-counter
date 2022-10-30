@@ -19,7 +19,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
   return (
     <>
       <NextHead title={`${user.name}'s Profile`} icon="/intertwined.svg" />
-      <div className="pt-20">
+      <div className="">
         <p>name {user.name}</p>
         <p>gameUid {user.gameUid}</p>
         <p>event {user.wishes.event}</p>
