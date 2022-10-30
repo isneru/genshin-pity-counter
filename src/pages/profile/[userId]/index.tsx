@@ -20,7 +20,6 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
     <>
       <NextHead title={`${user.name}'s Profile`} icon="/intertwined.svg" />
       <div className="pt-20">
-        <p>id {user.id}</p>
         <p>name {user.name}</p>
         <p>gameUid {user.gameUid}</p>
         <p>event {user.wishes.event}</p>
@@ -34,7 +33,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
 export default UserProfile
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const userGameUid = Number(params!.gameUid)
+  const userId = String(params!.userId)
   const user = await prisma!.user.findUnique({
     select: {
       id: true,
@@ -42,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       gameUid: true,
       wishes: true
     },
-    where: { gameUid: userGameUid }
+    where: { id: userId }
   })
 
   if (user) {

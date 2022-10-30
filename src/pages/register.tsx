@@ -1,5 +1,6 @@
 import { NextHead } from "components"
 import type { GetServerSideProps, NextPage } from "next"
+import Link from "next/link"
 import { useRouter } from "next/router"
 import { useState } from "react"
 import { api, prisma } from "service"
@@ -87,7 +88,9 @@ const Register: NextPage<DataProps> = ({ users }: DataProps) => {
           {users.map(user => (
             <li key={user.id} className="bg-slate-900 px-4 py-3 rounded-sm flex gap-2">
               <div className="flex-1 text-center">
-                <span>{user.name}</span>
+                <Link href={`/profile/${user.id}`}>
+                  <span>{user.name}</span>
+                </Link>
               </div>
               <div className="w-[1px] h-full bg-white/20" />
               <div className="flex-1 text-center">

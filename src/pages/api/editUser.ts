@@ -2,20 +2,16 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { prisma } from "service/prisma"
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { gameUid, weapon, event, standard } = req.body
-
   try {
-    const updatedUser = await prisma!.user.update({
+    const updatedUser = await prisma!.wishes.update({
       data: {
-        wishes: {
-          update: {
-            weapon,
-            event,
-            standard
-          }
-        }
+        standard: req.body.wishes.standard,
+        event: req.body.wishes.event,
+        weapon: req.body.wishes.weapon
       },
-      where: { gameUid }
+      where: {
+        userId: req.body.id
+      }
     })
     res.status(200).json({ message: "User Updated", success: true, data: updatedUser })
   } catch (error) {
