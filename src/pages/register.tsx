@@ -1,4 +1,4 @@
-import { NextHead } from "components"
+import { LoadingSpinner, NextHead } from "components"
 import type { GetServerSideProps, NextPage } from "next"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -20,6 +20,7 @@ interface CredentialsProps {
 
 const Register: NextPage<DataProps> = ({ users }: DataProps) => {
   const [credentials, setCredentials] = useState<CredentialsProps>({ name: "", gameUid: 0 })
+  const [isRegisterLoading, setIsRegisterLoading] = useState<boolean>(false)
   const router = useRouter()
 
   const refreshData = () => {
@@ -27,6 +28,7 @@ const Register: NextPage<DataProps> = ({ users }: DataProps) => {
   }
 
   async function createUser(data: CredentialsProps) {
+    setIsRegisterLoading(true)
     try {
       api
         .post("/createUser", JSON.stringify(data), {
@@ -36,6 +38,7 @@ const Register: NextPage<DataProps> = ({ users }: DataProps) => {
         })
         .then(() => {
           refreshData()
+          setIsRegisterLoading(false)
         })
     } catch (error) {
       console.log(error)
@@ -44,7 +47,7 @@ const Register: NextPage<DataProps> = ({ users }: DataProps) => {
   return (
     <>
       <NextHead title="Create Account" icon="/intertwined.svg" />
-      <div className="h-screen w-full flex flex-col items-center justify-center">
+      <div className="mt-20 w-full flex flex-col items-center justify-center">
         <div className="text-2xl font-bold">
           <h1>Update your pity number easily!</h1>
         </div>
@@ -79,12 +82,14 @@ const Register: NextPage<DataProps> = ({ users }: DataProps) => {
             />
           </div>
           <button
-            className="mt-4 py-3 px-4 bg-pink-300 rounded font-semibold text-black text-sm w-full transition-colors hover:bg-pink-200 focus:ring-2 ring-white"
+            disabled={isRegisterLoading}
+            className="mt-4 py-3 px-4 bg-pink-300 rounded font-semibold text-black text-sm w-full transition-colors hover:bg-pink-200 focus:ring-2 ring-white flex items-center justify-center"
             type="submit">
             Sign Up
           </button>
+          {isRegisterLoading && <LoadingSpinner />}
         </form>
-        <ul className="mt-14 flex flex-col items-stretch w-full max-w-[400px] max-h-[40vh] overflow-y-auto gap-4">
+        <ul className="mt-14 flex flex-col items-stretch w-full max-w-[400px] max-h-[35vh] overflow-y-auto gap-4">
           {users.map(user => (
             <li key={user.id} className="bg-slate-900 px-4 py-3 rounded-sm flex gap-2">
               <div className="flex-1 text-center">
