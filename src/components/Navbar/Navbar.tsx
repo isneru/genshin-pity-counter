@@ -10,7 +10,11 @@ export const Navbar = () => {
         </Link>
       </div>
       <div className="hidden sm:flex">
-        <Link href="/register">Create Account</Link>
+        <Link
+          className="py-2 px-3 bg-pink-300 rounded font-semibold text-black text-sm w-full transition-colors hover:bg-pink-200 focus:ring-2 ring-white"
+          href="/register">
+          Create Account
+        </Link>
       </div>
     </header>
   )
