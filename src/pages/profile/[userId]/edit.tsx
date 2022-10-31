@@ -45,80 +45,82 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
   return (
     <>
       <NextHead title="Edit Profile" icon="/intertwined.svg" />
-      <form
-        onSubmit={e => {
-          e.preventDefault()
-          createUser(userData)
-        }}
-        className="h-screen flex flex-col justify-center items-center">
-        <div className="bg-slate-900 py-4 px-6 rounded flex gap-4">
-          <div className="flex flex-col items-center justify-center px-10">
-            <strong className="text-2xl leading-none font-semibold">{user.name}</strong>
-            <span className="text-base text-zinc-400">{user.gameUid}</span>
+      <div className="h-screen w-full flex justify-center items-center -mt-20">
+        <form
+          onSubmit={e => {
+            e.preventDefault()
+            createUser(userData)
+          }}
+          className="flex flex-col justify-center items-stretch max-w-[400px]">
+          <div className="bg-slate-900 py-4 px-6 rounded flex gap-4">
+            <div className="flex flex-col items-center justify-center px-10">
+              <strong className="text-2xl leading-none font-semibold">{user.name}</strong>
+              <span className="text-base text-zinc-400">{user.gameUid}</span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-col">
+                <label htmlFor="event">Event Wishes</label>
+                <input
+                  onChange={e =>
+                    setUserData({
+                      ...userData,
+                      wishes: { ...userData.wishes, [e.currentTarget.name]: e.currentTarget.valueAsNumber }
+                    })
+                  }
+                  type="number"
+                  id="event"
+                  name="event"
+                  min={0}
+                  max={90}
+                  className="px-3 h-8 rounded bg-mainblue w-full focus:outline-none focus:ring-2 ring-pink-300"
+                  defaultValue={user.wishes.event}
+                />
+              </div>
+              <div className="flex flex-col">
+                <label htmlFor="weapon">Weapon Wishes</label>
+                <input
+                  onChange={e =>
+                    setUserData({
+                      ...userData,
+                      wishes: { ...userData.wishes, [e.currentTarget.name]: e.currentTarget.valueAsNumber }
+                    })
+                  }
+                  type="number"
+                  id="weapon"
+                  name="weapon"
+                  min={0}
+                  max={80}
+                  className="px-3 h-8 rounded bg-mainblue w-full focus:outline-none focus:ring-2 ring-pink-300"
+                  defaultValue={user.wishes.weapon}
+                />
+              </div>
+              <div className="flex flex-col">
+                <label htmlFor="standard">Standard Wishes</label>
+                <input
+                  onChange={e =>
+                    setUserData({
+                      ...userData,
+                      wishes: { ...userData.wishes, [e.currentTarget.name]: e.currentTarget.valueAsNumber }
+                    })
+                  }
+                  type="number"
+                  id="standard"
+                  name="standard"
+                  min={0}
+                  max={90}
+                  className="px-3 h-8 rounded bg-mainblue w-full focus:outline-none focus:ring-2 ring-pink-300"
+                  defaultValue={user.wishes.standard}
+                />
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-col">
-              <label htmlFor="event">Event Wishes</label>
-              <input
-                onChange={e =>
-                  setUserData({
-                    ...userData,
-                    wishes: { ...userData.wishes, [e.currentTarget.name]: e.currentTarget.valueAsNumber }
-                  })
-                }
-                type="number"
-                id="event"
-                name="event"
-                min={0}
-                max={90}
-                className="px-3 h-8 rounded bg-mainblue w-full focus:outline-none focus:ring-2 ring-pink-300"
-                defaultValue={user.wishes.event}
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="weapon">Weapon Wishes</label>
-              <input
-                onChange={e =>
-                  setUserData({
-                    ...userData,
-                    wishes: { ...userData.wishes, [e.currentTarget.name]: e.currentTarget.valueAsNumber }
-                  })
-                }
-                type="number"
-                id="weapon"
-                name="weapon"
-                min={0}
-                max={80}
-                className="px-3 h-8 rounded bg-mainblue w-full focus:outline-none focus:ring-2 ring-pink-300"
-                defaultValue={user.wishes.weapon}
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="standard">Standard Wishes</label>
-              <input
-                onChange={e =>
-                  setUserData({
-                    ...userData,
-                    wishes: { ...userData.wishes, [e.currentTarget.name]: e.currentTarget.valueAsNumber }
-                  })
-                }
-                type="number"
-                id="standard"
-                name="standard"
-                min={0}
-                max={90}
-                className="px-3 h-8 rounded bg-mainblue w-full focus:outline-none focus:ring-2 ring-pink-300"
-                defaultValue={user.wishes.standard}
-              />
-            </div>
-          </div>
-        </div>
-        <button
-          className="mt-4 py-3 px-4 bg-slate-900 rounded font-semibold text-md transition-colors hover:bg-slate-800 focus:ring-2 ring-white"
-          type="submit">
-          Confirm Changes
-        </button>
-      </form>
+          <button
+            className="mt-4 py-3 px-4 bg-slate-900 rounded font-semibold text-md transition-colors hover:bg-slate-800 focus:ring-2 ring-white"
+            type="submit">
+            Confirm Changes
+          </button>
+        </form>
+      </div>
     </>
   )
 }

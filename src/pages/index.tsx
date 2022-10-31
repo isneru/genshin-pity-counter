@@ -5,7 +5,6 @@ const Home: NextPage = () => {
   return (
     <>
       <NextHead title="Home" icon="/acquainted.svg" />
-      <div className="h-screen"></div>
     </>
   )
 }
