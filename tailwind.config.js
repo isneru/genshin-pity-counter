@@ -8,7 +8,15 @@ module.exports = {
         "spin-slow": "spin 2s linear infinite"
       },
       colors: {
-        mainblue: "#0E0D17"
+        black: "#18181B",
+        white: "#EEEEEE",
+        pyro: "#AF2824",
+        hydro: "#218DBB",
+        anemo: "#289C8C",
+        electro: "#7455BF",
+        dendro: "#6EAB20",
+        cryo: "#7BABD7",
+        geo: "#E4A65B"
       }
     }
   },

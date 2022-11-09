@@ -1,8 +1,10 @@
+import clsx from "clsx"
 import { NextHead } from "components"
 import type { GetServerSideProps, NextPage } from "next"
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { api, prisma } from "service"
+import { ThemeContext } from "utils/ThemeProvider"
 
 interface UserProfileProps {
   user: UserDataProps
@@ -20,6 +22,7 @@ interface UserDataProps {
 }
 
 const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => {
+  const { theme } = useContext(ThemeContext)
   const [userData, setUserData] = useState<UserDataProps>(user)
   const router = useRouter()
 
@@ -45,17 +48,26 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
   return (
     <>
       <NextHead title="Edit Profile" icon="/intertwined.svg" />
-      <div className="h-screen w-full flex justify-center items-center -mt-20">
+      <div className="container flex justify-center items-center">
         <form
           onSubmit={e => {
             e.preventDefault()
             createUser(userData)
           }}
-          className="flex flex-col justify-center items-stretch max-w-[400px]">
-          <div className="bg-slate-900 py-4 px-6 rounded flex gap-4">
+          className="flex flex-col justify-center items-stretch max-w-[600px]">
+          <div
+            className={clsx("py-4 px-6 rounded flex gap-4", {
+              "bg-pyro/50": theme === "pyro",
+              "bg-anemo/50": theme === "anemo",
+              "bg-hydro/50": theme === "hydro",
+              "bg-electro/50": theme === "electro",
+              "bg-dendro/50": theme === "dendro",
+              "bg-cryo/50": theme === "cryo",
+              "bg-geo/50": theme === "geo"
+            })}>
             <div className="flex flex-col items-center justify-center px-10">
               <strong className="text-2xl leading-none font-semibold">{user.name}</strong>
-              <span className="text-base text-zinc-400">{user.gameUid}</span>
+              <span className="text-base">{user.gameUid}</span>
             </div>
             <div className="flex flex-col gap-2">
               <div className="flex flex-col">
@@ -72,7 +84,7 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
                   name="event"
                   min={0}
                   max={90}
-                  className="px-3 h-8 rounded bg-mainblue w-full focus:outline-none focus:ring-2 ring-pink-300"
+                  className="px-3 h-8 rounded bg-black w-full focus:outline-none focus:ring-2 ring-pyro"
                   defaultValue={user.wishes.event}
                 />
               </div>
@@ -90,7 +102,7 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
                   name="weapon"
                   min={0}
                   max={80}
-                  className="px-3 h-8 rounded bg-mainblue w-full focus:outline-none focus:ring-2 ring-pink-300"
+                  className="px-3 h-8 rounded bg-black w-full focus:outline-none focus:ring-2 ring-pyro"
                   defaultValue={user.wishes.weapon}
                 />
               </div>
@@ -108,14 +120,22 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
                   name="standard"
                   min={0}
                   max={90}
-                  className="px-3 h-8 rounded bg-mainblue w-full focus:outline-none focus:ring-2 ring-pink-300"
+                  className="px-3 h-8 rounded bg-black w-full focus:outline-none focus:ring-2 ring-pyro"
                   defaultValue={user.wishes.standard}
                 />
               </div>
             </div>
           </div>
           <button
-            className="mt-4 py-3 px-4 bg-slate-900 rounded font-semibold text-md transition-colors hover:bg-slate-800 focus:ring-2 ring-white"
+            className={clsx("mt-4 py-3 px-4 rounded font-semibold text-md transition-colors focus:ring-2", {
+              "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
+              "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
+              "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
+              "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
+              "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
+              "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
+              "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+            })}
             type="submit">
             Confirm Changes
           </button>

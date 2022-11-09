@@ -3,5 +3,10 @@
 @tailwind utilities;
 
 body {
-  @apply text-white bg-mainblue;
+  @apply text-white bg-black;
+}
+
+.container {
+  width: calc(100vw - 200px);
+  height: 100vh;
 }
