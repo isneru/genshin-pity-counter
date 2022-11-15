@@ -56,7 +56,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
             </div>
           </div>
           <Link
-            href={`./${user.id}/edit`}
+            href={`./${user.gameUid}/edit`}
             className={clsx("mt-4 py-3 px-4 rounded font-semibold text-md transition-colors focus:ring-2 text-center", {
               "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
               "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
@@ -78,7 +78,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
 export default UserProfile
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const userId = String(params!.userId)
+  const userUid = String(params!.gameUid)
   const user = await prisma!.user.findUnique({
     select: {
       id: true,
@@ -86,7 +86,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       gameUid: true,
       wishes: true
     },
-    where: { id: userId }
+    where: { gameUid: Number(userUid) }
   })
 
   if (user) {

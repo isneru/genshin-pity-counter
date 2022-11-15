@@ -35,7 +35,7 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
                 "bg-geo/50": theme === "geo"
               })}>
               <div className="flex-1 text-center">
-                <Link href={`/profile/${user.id}`}>
+                <Link href={`/profile/${user.gameUid}`}>
                   <span className="font-bold">{user.name}</span>
                 </Link>
               </div>

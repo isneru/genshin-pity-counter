@@ -38,9 +38,8 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
             "Content-Type": "application/json"
           }
         })
-        .then(() => {
-          refreshData()
-        })
+        .then(() => refreshData())
+        .then(() => router.push(`/profile/${user.gameUid}`))
     } catch (error) {
       console.log(error)
     }
@@ -148,7 +147,7 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
 export default EditProfile
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const userId = String(params!.userId)
+  const userUid = String(params!.gameUid)
   const user = await prisma!.user.findUnique({
     select: {
       id: true,
@@ -156,7 +155,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       gameUid: true,
       wishes: true
     },
-    where: { id: userId }
+    where: { gameUid: Number(userUid) }
   })
 
   if (user) {
