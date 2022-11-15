@@ -28,13 +28,13 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
         <div className="flex flex-col justify-center items-stretch max-w-[400px]">
           <div
             className={clsx("py-4 px-6 rounded flex gap-4", {
-              "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
-              "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
-              "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
-              "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
-              "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
-              "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
-              "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+              "bg-pyro/50": theme === "pyro",
+              "bg-anemo/50": theme === "anemo",
+              "bg-hydro/50": theme === "hydro",
+              "bg-electro/50": theme === "electro",
+              "bg-dendro/50": theme === "dendro",
+              "bg-cryo/50": theme === "cryo",
+              "bg-geo/50": theme === "geo"
             })}>
             <div className="flex flex-col items-center justify-center px-10">
               <strong className="text-2xl leading-none font-semibold">{user.name}</strong>
