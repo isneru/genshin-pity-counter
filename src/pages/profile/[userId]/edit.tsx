@@ -48,7 +48,7 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
   return (
     <>
       <NextHead title="Edit Profile" icon="/intertwined.svg" />
-      <div className="container flex justify-center items-center">
+      <div className="h-screen flex justify-center items-center">
         <form
           onSubmit={e => {
             e.preventDefault()

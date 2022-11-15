@@ -4,11 +4,14 @@ module.exports = {
   content: ["./**/*.tsx"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: "Poppins, sans-serif"
+      },
       animation: {
         "spin-slow": "spin 2s linear infinite"
       },
       colors: {
-        black: "#18181B",
+        black: "#18181b",
         white: "#EEEEEE",
         pyro: "#AF2824",
         hydro: "#218DBB",

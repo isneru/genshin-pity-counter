@@ -41,7 +41,7 @@ const Register: NextPage = () => {
   return (
     <>
       <NextHead title="Create Account" icon="/intertwined.svg" />
-      <div className="mt-20 w-full flex flex-col items-center justify-center">
+      <div className="h-screen flex flex-col items-center justify-center">
         <div className="text-2xl font-bold">
           <h1>Update your pity number easily!</h1>
         </div>

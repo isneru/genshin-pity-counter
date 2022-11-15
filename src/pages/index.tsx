@@ -15,12 +15,12 @@ interface DataProps {
 }
 
 const Home: NextPage<DataProps> = ({ users }: DataProps) => {
-  const { theme, setTheme } = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext)
 
   return (
     <>
       <NextHead title="Home" icon="/acquainted.svg" />
-      <div className="container flex justify-center items-center">
+      <div className="h-screen flex justify-center items-center">
         <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {users.map(user => (
             <li

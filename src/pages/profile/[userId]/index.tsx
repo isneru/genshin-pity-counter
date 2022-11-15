@@ -24,7 +24,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
   return (
     <>
       <NextHead title={`${user.name}'s Profile`} icon="/intertwined.svg" />
-      <div className="container flex justify-center items-center">
+      <div className="h-screen flex justify-center items-center">
         <div className="flex flex-col justify-center items-stretch max-w-[400px]">
           <div
             className={clsx("py-4 px-6 rounded flex gap-4", {

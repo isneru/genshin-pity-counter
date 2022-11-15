@@ -8,7 +8,7 @@ export const Navbar = () => {
   const { theme } = useContext(ThemeContext)
 
   return (
-    <header className="py-6 px-6 h-20 w-full sm:py-6 sm:px-0 sm:h-full sm:w-[200px] flex justify-between items-center sm:flex-col">
+    <header className="py-6 px-6 h-20 w-full flex justify-between items-center">
       <div className="flex items-center">
         <Link href="/">
           <Image priority width={150} height={45} src="/logo.svg" alt="Logo" />
