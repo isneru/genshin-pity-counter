@@ -25,23 +25,19 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
           {users.map(user => (
             <li
               key={user.id}
-              className={clsx("px-4 py-3 rounded-sm flex flex-col gap-2", {
-                "bg-pyro/50": theme === "pyro",
-                "bg-anemo/50": theme === "anemo",
-                "bg-hydro/50": theme === "hydro",
-                "bg-electro/50": theme === "electro",
-                "bg-dendro/50": theme === "dendro",
-                "bg-cryo/50": theme === "cryo",
-                "bg-geo/50": theme === "geo"
+              className={clsx("rounded-sm transition-colors", {
+                "bg-pyro/50 hover:bg-pyro": theme === "pyro",
+                "bg-anemo/50 hover:bg-anemo": theme === "anemo",
+                "bg-hydro/50 hover:bg-hydro": theme === "hydro",
+                "bg-electro/50 hover:bg-electro": theme === "electro",
+                "bg-dendro/50 hover:bg-dendro": theme === "dendro",
+                "bg-cryo/50 hover:bg-cryo": theme === "cryo",
+                "bg-geo/50 hover:bg-geo": theme === "geo"
               })}>
-              <div className="flex-1 text-center">
-                <Link href={`/profile/${user.gameUid}`}>
-                  <span className="font-bold">{user.name}</span>
-                </Link>
-              </div>
-              <div className="flex-1 text-center">
+              <Link className="px-4 py-3 flex flex-1 flex-col text-center" href={`/profile/${user.gameUid}`}>
+                <span className="font-bold">{user.name}</span>
                 <span>UID {user.gameUid}</span>
-              </div>
+              </Link>
             </li>
           ))}
         </ul>

@@ -13,14 +13,14 @@ export const ThemeSwitcher = () => {
       <Dialog.Root>
         <Dialog.Trigger asChild>
           <button
-            className={clsx("bg-white flex items-center justify-center rounded-full w-12 h-12", {
-              "text-pyro": theme === "pyro",
-              "text-anemo": theme === "anemo",
-              "text-hydro": theme === "hydro",
-              "text-electro": theme === "electro",
-              "text-dendro": theme === "dendro",
-              "text-cryo": theme === "cryo",
-              "text-geo": theme === "geo"
+            className={clsx("bg-white flex items-center justify-center rounded-full w-12 h-12 transition-colors", {
+              "text-pyro/90 hover:text-pyro": theme === "pyro",
+              "text-anemo/90 hover:text-anemo": theme === "anemo",
+              "text-hydro/90 hover:text-hydro": theme === "hydro",
+              "text-electro/90 hover:text-electro": theme === "electro",
+              "text-dendro/90 hover:text-dendro": theme === "dendro",
+              "text-cryo/90 hover:text-cryo": theme === "cryo",
+              "text-geo/90 hover:text-geo": theme === "geo"
             })}>
             <Palette weight="fill" size={36} className="drop-shadow-2xl" />
           </button>

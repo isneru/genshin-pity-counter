@@ -38,7 +38,6 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
             "Content-Type": "application/json"
           }
         })
-        .then(() => refreshData())
         .then(() => router.push(`/profile/${user.gameUid}`))
     } catch (error) {
       console.log(error)
