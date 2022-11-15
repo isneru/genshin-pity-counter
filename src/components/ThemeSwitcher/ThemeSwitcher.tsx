@@ -48,7 +48,7 @@ export const ThemeSwitcher = () => {
               }>
               {themes.map(themeValue => {
                 return (
-                  <div className="flex gap-1 items-center">
+                  <div key={themeValue} className="flex gap-1 items-center">
                     <RadioGroup.Item
                       className="rounded-full w-5 h-5 bg-white hover:bg-zinc-300"
                       value={themeValue}
