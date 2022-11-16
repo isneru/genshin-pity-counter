@@ -16,15 +16,10 @@ export const Navbar = () => {
       </div>
       <div className="flex">
         <Link
-          className={clsx("py-2 px-3 rounded font-semibold text-white text-sm w-full transition-colors focus:ring-2", {
-            "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
-            "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
-            "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
-            "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
-            "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
-            "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
-            "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
-          })}
+          className={clsx(
+            "py-2 px-3 rounded font-semibold text-white text-sm w-full transition-colors focus:ring-2",
+            `bg-${theme}/50 hover:bg-${theme} ring-${theme}`
+          )}
           href="/register">
           Create Account
         </Link>
