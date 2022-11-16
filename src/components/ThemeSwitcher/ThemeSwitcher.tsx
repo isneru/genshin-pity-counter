@@ -4,6 +4,7 @@ import clsx from "clsx"
 import { Palette, X } from "phosphor-react"
 import { useContext } from "react"
 import { ThemeContext } from "utils/ThemeProvider"
+import { themeValues } from "utils/types"
 
 export const ThemeSwitcher = () => {
   const { themes, theme, setTheme } = useContext(ThemeContext)
@@ -63,9 +64,7 @@ export const ThemeSwitcher = () => {
               <RadioGroup.Root
                 defaultValue={theme}
                 className="flex gap-5"
-                onValueChange={(value: "pyro" | "anemo" | "hydro" | "electro" | "dendro" | "cryo" | "geo") =>
-                  setTheme(value)
-                }>
+                onValueChange={(value: themeValues) => setTheme(value)}>
                 {themes.map(themeValue => {
                   return (
                     <div key={themeValue} className="flex gap-1 items-center">

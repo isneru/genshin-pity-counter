@@ -1,10 +1,9 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react"
+import { themeValues } from "./types"
 
 type Children = {
   children: ReactNode
 }
-
-type themeValues = "pyro" | "anemo" | "hydro" | "electro" | "dendro" | "cryo" | "geo"
 
 interface ThemeContextData {
   themes: string[]

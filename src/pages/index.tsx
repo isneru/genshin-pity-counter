@@ -21,11 +21,11 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
     <>
       <NextHead title="Home" icon="/acquainted.svg" />
       <div className="h-screen flex justify-center items-center">
-        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <ul className="flex justify-center items-center flex-wrap gap-4 max-w-[80vw]">
           {users.map(user => (
             <li
               key={user.id}
-              className={clsx("rounded transition-colors", {
+              className={clsx("flex flex-col w-[200px] h-20 justify-center items-center rounded transition-colors", {
                 "bg-pyro/50 hover:bg-pyro": theme === "pyro",
                 "bg-anemo/50 hover:bg-anemo": theme === "anemo",
                 "bg-hydro/50 hover:bg-hydro": theme === "hydro",
@@ -34,7 +34,9 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
                 "bg-cryo/50 hover:bg-cryo": theme === "cryo",
                 "bg-geo/50 hover:bg-geo": theme === "geo"
               })}>
-              <Link className="px-4 py-3 flex flex-1 flex-col text-center" href={`/profile/${user.gameUid}`}>
+              <Link
+                className="flex flex-col justify-center items-center px-4 py-3 flex-1"
+                href={`/profile/${user.gameUid}`}>
                 <span className="font-bold">{user.name ? user.name : "No Name"}</span>
                 <span>{user.gameUid}</span>
               </Link>
