@@ -21,17 +21,20 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
     <>
       <NextHead title="Home" icon="/acquainted.svg" />
       <div className="h-screen flex justify-center items-center">
-        <ul className="flex items-center justify-center flex-wrap gap-4 max-w-[90vw]">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {users.map(user => (
             <li
               key={user.id}
-              className={clsx(
-                "w-40 h-20 flex flex-col items-center justify-center rounded transition-colors",
-                `bg-${theme}/50 hover:bg-${theme}`
-              )}>
-              <Link
-                className="px-4 py-3 flex flex-1 flex-col items-center justify-center"
-                href={`/profile/${user.gameUid}`}>
+              className={clsx("rounded transition-colors", {
+                "bg-pyro/50 hover:bg-pyro": theme === "pyro",
+                "bg-anemo/50 hover:bg-anemo": theme === "anemo",
+                "bg-hydro/50 hover:bg-hydro": theme === "hydro",
+                "bg-electro/50 hover:bg-electro": theme === "electro",
+                "bg-dendro/50 hover:bg-dendro": theme === "dendro",
+                "bg-cryo/50 hover:bg-cryo": theme === "cryo",
+                "bg-geo/50 hover:bg-geo": theme === "geo"
+              })}>
+              <Link className="px-4 py-3 flex flex-1 flex-col text-center" href={`/profile/${user.gameUid}`}>
                 <span className="font-bold">{user.name ? user.name : "No Name"}</span>
                 <span>{user.gameUid}</span>
               </Link>

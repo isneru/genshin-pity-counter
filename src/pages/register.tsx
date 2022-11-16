@@ -60,10 +60,15 @@ const Register: NextPage = () => {
               name="name"
               type="text"
               id="name"
-              className={clsx(
-                "py-4 px-3 h-12 rounded w-full focus:outline-none focus:ring-2 ",
-                `bg-${theme}/50 hover:bg-${theme} ring-${theme}`
-              )}
+              className={clsx("py-4 px-3 h-12 rounded w-full focus:outline-none focus:ring-2 ", {
+                "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
+                "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
+                "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
+                "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
+                "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
+                "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
+                "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+              })}
             />
           </div>
           <div className="font-semibold flex flex-col gap-2">
@@ -75,17 +80,30 @@ const Register: NextPage = () => {
               name="gameUid"
               type="text"
               id="gameUid"
-              className={clsx(
-                "py-4 px-3 h-12 rounded w-full focus:outline-none focus:ring-2 ",
-                `bg-${theme}/50 hover:bg-${theme} ring-${theme}`
-              )}
+              className={clsx("py-4 px-3 h-12 rounded w-full focus:outline-none focus:ring-2 ", {
+                "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
+                "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
+                "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
+                "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
+                "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
+                "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
+                "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+              })}
             />
           </div>
           <button
             disabled={isRegisterLoading}
             className={clsx(
               "mt-4 py-3 px-4  rounded font-semibold text-sm w-full transition-colors focus:ring-2 flex items-center justify-center",
-              `bg-${theme}/50 hover:bg-${theme} ring-${theme}`
+              {
+                "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
+                "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
+                "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
+                "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
+                "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
+                "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
+                "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+              }
             )}
             type="submit">
             Sign Up

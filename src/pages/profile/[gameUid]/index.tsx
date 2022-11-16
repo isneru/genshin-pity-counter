@@ -26,7 +26,16 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
       <NextHead title={`${user.name}'s Profile`} icon="/intertwined.svg" />
       <div className="h-screen flex justify-center items-center">
         <div className="flex flex-col justify-center items-stretch max-w-[400px]">
-          <div className={clsx("py-4 px-6 rounded flex gap-4", `bg-${theme}/50`)}>
+          <div
+            className={clsx("py-4 px-6 rounded flex gap-4", {
+              "bg-pyro/50": theme === "pyro",
+              "bg-anemo/50": theme === "anemo",
+              "bg-hydro/50": theme === "hydro",
+              "bg-electro/50": theme === "electro",
+              "bg-dendro/50": theme === "dendro",
+              "bg-cryo/50": theme === "cryo",
+              "bg-geo/50": theme === "geo"
+            })}>
             <div className="flex flex-col items-center justify-center px-10">
               <strong className="text-2xl leading-none font-semibold">{user.name}</strong>
               <span className="text-base">{user.gameUid}</span>
@@ -48,10 +57,15 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
           </div>
           <Link
             href={`./${user.gameUid}/edit`}
-            className={clsx(
-              "mt-4 py-3 px-4 rounded font-semibold text-md transition-colors focus:ring-2 text-center",
-              `bg-${theme}/50 hover:bg-${theme} ring-${theme}`
-            )}
+            className={clsx("mt-4 py-3 px-4 rounded font-semibold text-md transition-colors focus:ring-2 text-center", {
+              "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
+              "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
+              "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
+              "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
+              "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
+              "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
+              "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+            })}
             type="submit">
             Edit Profile
           </Link>
