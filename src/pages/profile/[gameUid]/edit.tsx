@@ -26,10 +26,6 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
   const [userData, setUserData] = useState<UserDataProps>(user)
   const router = useRouter()
 
-  const refreshData = () => {
-    router.replace(router.asPath)
-  }
-
   async function createUser(data: UserDataProps) {
     try {
       api
@@ -82,7 +78,15 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
                   name="event"
                   min={0}
                   max={90}
-                  className="px-3 h-8 rounded bg-black w-full focus:outline-none focus:ring-2 ring-pyro"
+                  className={clsx("px-3 h-8 rounded bg-black w-full focus:outline-none focus:ring-2", {
+                    "ring-pyro": theme === "pyro",
+                    "ring-anemo": theme === "anemo",
+                    "ring-hydro": theme === "hydro",
+                    "ring-electro": theme === "electro",
+                    "ring-dendro": theme === "dendro",
+                    "ring-cryo": theme === "cryo",
+                    "ring-geo": theme === "geo"
+                  })}
                   defaultValue={user.wishes.event}
                 />
               </div>
@@ -100,7 +104,15 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
                   name="weapon"
                   min={0}
                   max={80}
-                  className="px-3 h-8 rounded bg-black w-full focus:outline-none focus:ring-2 ring-pyro"
+                  className={clsx("px-3 h-8 rounded bg-black w-full focus:outline-none focus:ring-2", {
+                    "ring-pyro": theme === "pyro",
+                    "ring-anemo": theme === "anemo",
+                    "ring-hydro": theme === "hydro",
+                    "ring-electro": theme === "electro",
+                    "ring-dendro": theme === "dendro",
+                    "ring-cryo": theme === "cryo",
+                    "ring-geo": theme === "geo"
+                  })}
                   defaultValue={user.wishes.weapon}
                 />
               </div>
@@ -118,7 +130,15 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
                   name="standard"
                   min={0}
                   max={90}
-                  className="px-3 h-8 rounded bg-black w-full focus:outline-none focus:ring-2 ring-pyro"
+                  className={clsx("px-3 h-8 rounded bg-black w-full focus:outline-none focus:ring-2", {
+                    "ring-pyro": theme === "pyro",
+                    "ring-anemo": theme === "anemo",
+                    "ring-hydro": theme === "hydro",
+                    "ring-electro": theme === "electro",
+                    "ring-dendro": theme === "dendro",
+                    "ring-cryo": theme === "cryo",
+                    "ring-geo": theme === "geo"
+                  })}
                   defaultValue={user.wishes.standard}
                 />
               </div>

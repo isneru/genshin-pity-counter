@@ -21,6 +21,6 @@ model Wishes {
   event    Int    @default(0)
   weapon   Int    @default(0)
   standard Int    @default(0)
-  user     User   @relation(fields: [userId], references: [id])
-  userId   String @unique
+  user     User   @relation(fields: [userUid], references: [gameUid])
+  userUid  Int    @unique
 }

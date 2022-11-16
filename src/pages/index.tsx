@@ -25,7 +25,7 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
           {users.map(user => (
             <li
               key={user.id}
-              className={clsx("rounded-sm transition-colors", {
+              className={clsx("rounded transition-colors", {
                 "bg-pyro/50 hover:bg-pyro": theme === "pyro",
                 "bg-anemo/50 hover:bg-anemo": theme === "anemo",
                 "bg-hydro/50 hover:bg-hydro": theme === "hydro",
@@ -35,8 +35,8 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
                 "bg-geo/50 hover:bg-geo": theme === "geo"
               })}>
               <Link className="px-4 py-3 flex flex-1 flex-col text-center" href={`/profile/${user.gameUid}`}>
-                <span className="font-bold">{user.name}</span>
-                <span>UID {user.gameUid}</span>
+                <span className="font-bold">{user.name ? user.name : "No Name"}</span>
+                <span>{user.gameUid}</span>
               </Link>
             </li>
           ))}

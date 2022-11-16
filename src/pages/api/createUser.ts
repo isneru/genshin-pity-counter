@@ -1,19 +1,20 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { prisma } from "service/prisma"
+import { z } from "zod"
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { name, gameUid } = req.body
+  const createUserBody = z.object({
+    name: z.string(),
+    gameUid: z.number().int().gte(100000000).lte(999999999)
+  })
+
+  const { name, gameUid } = createUserBody.parse(req.body)
 
   try {
     const user = await prisma!.user.create({
       data: {
         name,
-        gameUid
-      }
-    })
-
-    const updatedUser = await prisma!.user.update({
-      data: {
+        gameUid,
         wishes: {
           create: {
             weapon: 0,
@@ -21,10 +22,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             standard: 0
           }
         }
-      },
-      where: { id: user.id }
+      }
     })
-    res.status(200).json({ message: "User Created", success: true, data: updatedUser })
+
+    res.status(200).json({ message: "User Created", success: true, data: user })
   } catch (error) {
     console.log(error)
     res.status(500).json({ success: false, error })

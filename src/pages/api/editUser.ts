@@ -1,16 +1,29 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { prisma } from "service/prisma"
+import { z } from "zod"
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const editUserBody = z.object({
+    name: z.string(),
+    id: z.string(),
+    gameUid: z.number(),
+    wishes: z.object({
+      standard: z.number(),
+      event: z.number(),
+      weapon: z.number()
+    })
+  })
+
+  const { name, id, gameUid, wishes } = editUserBody.parse(req.body)
   try {
     const updatedUser = await prisma!.wishes.update({
       data: {
-        standard: req.body.wishes.standard,
-        event: req.body.wishes.event,
-        weapon: req.body.wishes.weapon
+        standard: wishes.standard,
+        event: wishes.event,
+        weapon: wishes.weapon
       },
       where: {
-        userId: req.body.id
+        userUid: gameUid
       }
     })
     res.status(200).json({ message: "User Updated", success: true, data: updatedUser })
