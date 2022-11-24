@@ -1,3 +1,4 @@
+export * from "./AvatarSwitcher"
 export * from "./Button"
 export * from "./LoadingSpinner"
 export * from "./Navbar"

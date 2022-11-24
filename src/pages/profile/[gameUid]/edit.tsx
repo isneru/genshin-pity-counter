@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { NextHead } from "components"
+import { AvatarSwitcher, NextHead } from "components"
 import type { GetServerSideProps, NextPage } from "next"
 import { useRouter } from "next/router"
 import { useContext, useState } from "react"
@@ -11,6 +11,7 @@ interface UserProfileProps {
 }
 
 interface UserDataProps {
+  avatar: string
   id: string
   name: string
   gameUid: number
@@ -67,6 +68,7 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
             <div className="flex flex-col items-center justify-center px-10">
               <strong className="text-2xl leading-none font-semibold">{user.name}</strong>
               <span className="text-base">{user.gameUid}</span>
+              <AvatarSwitcher user={user} />
             </div>
             <div className="flex flex-col gap-2">
               <div className="flex flex-col">

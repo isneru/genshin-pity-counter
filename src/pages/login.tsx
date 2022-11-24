@@ -13,7 +13,7 @@ interface CredentialsProps {
 
 const Login: NextPage = () => {
   const { theme } = useContext(ThemeContext)
-  const { setSession } = useContext(SessionContext)
+  const { setSession, session } = useContext(SessionContext)
   const [credentials, setCredentials] = useState<CredentialsProps>({ name: "", password: "" })
   const [isLoginLoading, setIsLoginLoading] = useState<boolean>(false)
   const router = useRouter()
@@ -21,18 +21,12 @@ const Login: NextPage = () => {
   async function loginUser(data: CredentialsProps) {
     setIsLoginLoading(true)
     try {
-      api.post("/loginUser", data).then(response => {
-        setIsLoginLoading(false)
-        setSession({
-          user: {
-            name: response.data.data.name,
-            avatar: response.data.data.avatar,
-            id: response.data.data.id,
-            gameUid: response.data.data.gameUid
-          }
-        })
-        router.push("/")
-      })
+      const newUser = await api.post("/loginUser", data)
+      setIsLoginLoading(false)
+      const userData = newUser.data.data
+      setSession({ user: userData })
+      console.log(session)
+      router.push(`/profile/${userData.gameUid}`)
     } catch (error) {
       return error
     }
