@@ -30,8 +30,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
     })
 
-    res.status(200).json({ message: "User Created", success: true, data: user })
+    return res.status(200).json({ message: "User Created", success: true, data: user })
   } catch (error) {
-    res.status(500).json({ success: false, error })
+    return res.status(500).json({ success: false, error })
   }
 }
