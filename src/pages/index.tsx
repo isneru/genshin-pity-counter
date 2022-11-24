@@ -4,7 +4,7 @@ import type { GetServerSideProps, NextPage } from "next"
 import Link from "next/link"
 import { useContext } from "react"
 import { prisma } from "service"
-import { ThemeContext } from "utils/ThemeProvider"
+import { ThemeContext } from "utils/providers"
 
 interface DataProps {
   users: {
@@ -53,6 +53,7 @@ export default Home
 export const getServerSideProps: GetServerSideProps = async () => {
   const users = await prisma!.user.findMany({
     select: {
+      avatar: true,
       id: true,
       name: true,
       gameUid: true,

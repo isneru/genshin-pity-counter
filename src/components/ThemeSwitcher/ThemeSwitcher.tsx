@@ -3,11 +3,12 @@ import * as RadioGroup from "@radix-ui/react-radio-group"
 import clsx from "clsx"
 import { Palette, X } from "phosphor-react"
 import { useContext } from "react"
-import { ThemeContext } from "utils/ThemeProvider"
+import { themes } from "utils/data"
+import { ThemeContext } from "utils/providers"
 import { themeValues } from "utils/types"
 
 export const ThemeSwitcher = () => {
-  const { themes, theme, setTheme } = useContext(ThemeContext)
+  const { theme, setTheme } = useContext(ThemeContext)
 
   return (
     <form className="absolute bottom-5 right-5">

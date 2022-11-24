@@ -1,13 +1,15 @@
 import clsx from "clsx"
 import { NextHead } from "components"
 import type { GetServerSideProps, NextPage } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { useContext } from "react"
 import { prisma } from "service"
-import { ThemeContext } from "utils/ThemeProvider"
+import { ThemeContext } from "utils/providers"
 
 interface UserProfileProps {
   user: {
+    avatar: string
     id: string
     name: string
     gameUid: number
@@ -39,6 +41,21 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
             <div className="flex flex-col items-center justify-center px-10">
               <strong className="text-2xl leading-none font-semibold">{user.name}</strong>
               <span className="text-base">{user.gameUid}</span>
+              <Image
+                className={clsx("rounded-full ring-2", {
+                  "ring-pyro": theme === "pyro",
+                  "ring-anemo": theme === "anemo",
+                  "ring-hydro": theme === "hydro",
+                  "ring-electro": theme === "electro",
+                  "ring-dendro": theme === "dendro",
+                  "ring-cryo": theme === "cryo",
+                  "ring-geo": theme === "geo"
+                })}
+                src={`/genshin-characters/${user.avatar}.png`}
+                width={100}
+                height={100}
+                alt="Genshin Character as profile picture"
+              />
             </div>
             <div className="flex flex-col gap-2">
               <div className="flex flex-col">
@@ -81,6 +98,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const userUid = String(params!.gameUid)
   const user = await prisma!.user.findUnique({
     select: {
+      avatar: true,
       id: true,
       name: true,
       gameUid: true,

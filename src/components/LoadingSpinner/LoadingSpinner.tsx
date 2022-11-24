@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import { HTMLAttributes, useContext } from "react"
-import { ThemeContext } from "utils/ThemeProvider"
+import { ThemeContext } from "utils/providers"
 
 interface LoadingSpinnerProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -10,7 +10,7 @@ export const LoadingSpinner = (props: LoadingSpinnerProps) => {
   return (
     <div className="absolute inset-0 bg-black/50 flex items-center justify-center h-screen pointer-events-none">
       <div
-        className={clsx("w-[200px] h-[200px] border-[20px] rounded-full animate-spin-slow", {
+        className={clsx("w-[100px] h-[100px] border-[20px] rounded-full animate-spin-slow", {
           "border-pyro/50 border-l-pyro": theme === "pyro",
           "border-anemo/50 border-l-anemo": theme === "anemo",
           "border-hydro/50 border-l-hydro": theme === "hydro",

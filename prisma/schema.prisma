@@ -11,9 +11,11 @@ model User {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String   @unique
   gameUid   Int      @unique
-  createdAt DateTime @default(now())
-  updateAt  DateTime @updatedAt
+  avatar    String   @default("aether")
+  password  String
   wishes    Wishes?
+  updateAt  DateTime @updatedAt
+  createdAt DateTime @default(now())
 }
 
 model Wishes {
@@ -21,6 +23,7 @@ model Wishes {
   event    Int    @default(0)
   weapon   Int    @default(0)
   standard Int    @default(0)
-  user     User   @relation(fields: [userUid], references: [gameUid])
   userUid  Int    @unique
+
+  user User @relation(fields: [userUid], references: [gameUid])
 }

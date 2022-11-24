@@ -4,7 +4,7 @@ import type { GetServerSideProps, NextPage } from "next"
 import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 import { api, prisma } from "service"
-import { ThemeContext } from "utils/ThemeProvider"
+import { SessionContext, ThemeContext } from "utils/providers"
 
 interface UserProfileProps {
   user: UserDataProps
@@ -23,8 +23,13 @@ interface UserDataProps {
 
 const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => {
   const { theme } = useContext(ThemeContext)
+  const { session } = useContext(SessionContext)
   const [userData, setUserData] = useState<UserDataProps>(user)
   const router = useRouter()
+
+  if (user.name !== session?.user.name) {
+    router.push("/")
+  }
 
   async function createUser(data: UserDataProps) {
     try {
@@ -170,6 +175,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const user = await prisma!.user.findUnique({
     select: {
       id: true,
+      avatar: true,
       name: true,
       gameUid: true,
       wishes: true

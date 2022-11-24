@@ -11,7 +11,7 @@ module.exports = {
         "spin-slow": "spin 2s linear infinite"
       },
       colors: {
-        black: "#18181b",
+        black: "#0F0F0F",
         white: "#EEEEEE",
         pyro: "#AF2824",
         hydro: "#218DBB",

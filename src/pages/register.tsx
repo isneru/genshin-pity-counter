@@ -4,38 +4,29 @@ import type { NextPage } from "next"
 import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 import { api } from "service"
-import { ThemeContext } from "utils/ThemeProvider"
+import { ThemeContext } from "utils/providers"
 
 interface CredentialsProps {
   name: string
   gameUid: number
+  password: string
 }
 
 const Register: NextPage = () => {
   const { theme } = useContext(ThemeContext)
-  const [credentials, setCredentials] = useState<CredentialsProps>({ name: "", gameUid: 0 })
+  const [credentials, setCredentials] = useState<CredentialsProps>({ name: "", gameUid: 0, password: "" })
   const [isRegisterLoading, setIsRegisterLoading] = useState<boolean>(false)
   const router = useRouter()
-
-  const refreshData = () => {
-    router.replace(router.asPath)
-  }
 
   async function createUser(data: CredentialsProps) {
     setIsRegisterLoading(true)
     try {
-      api
-        .post("/createUser", JSON.stringify(data), {
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-        .then(() => {
-          refreshData()
-          setIsRegisterLoading(false)
-        })
+      api.post("/createUser", data).then(() => {
+        setIsRegisterLoading(false)
+        router.push("/")
+      })
     } catch (error) {
-      console.log(error)
+      return error
     }
   }
   return (
@@ -91,11 +82,16 @@ const Register: NextPage = () => {
               })}
             />
           </div>
-          <button
-            disabled={isRegisterLoading}
-            className={clsx(
-              "mt-4 py-3 px-4  rounded font-semibold text-sm w-full transition-colors focus:ring-2 flex items-center justify-center",
-              {
+          <div className="font-semibold flex flex-col gap-2">
+            <label htmlFor="password" className="font-semibold">
+              Password
+            </label>
+            <input
+              onChange={e => setCredentials({ ...credentials, [e.currentTarget.name]: e.currentTarget.value })}
+              name="password"
+              type="password"
+              id="password"
+              className={clsx("py-4 px-3 h-12 rounded w-full focus:outline-none focus:ring-2 ", {
                 "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
                 "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
                 "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
@@ -103,6 +99,21 @@ const Register: NextPage = () => {
                 "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
                 "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
                 "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+              })}
+            />
+          </div>
+          <button
+            disabled={isRegisterLoading}
+            className={clsx(
+              "mt-4 py-3 px-4  rounded font-semibold text-sm w-full transition-colors focus:ring-2 flex items-center justify-center",
+              {
+                "bg-pyro/50 hover:bg-pyro ring-pyro disabled:bg-pyro/25": theme === "pyro",
+                "bg-anemo/50 hover:bg-anemo ring-anemo disabled:bg-anemo/25": theme === "anemo",
+                "bg-hydro/50 hover:bg-hydro ring-hydro disabled:bg-hydro/25": theme === "hydro",
+                "bg-electro/50 hover:bg-electro ring-electro disabled:bg-electro/25": theme === "electro",
+                "bg-dendro/50 hover:bg-dendro ring-dendro disabled:bg-dendro/25": theme === "dendro",
+                "bg-cryo/50 hover:bg-cryo ring-cryo disabled:bg-cryo/25": theme === "cryo",
+                "bg-geo/50 hover:bg-geo ring-geo disabled:bg-geo/25": theme === "geo"
               }
             )}
             type="submit">
