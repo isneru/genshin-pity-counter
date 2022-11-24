@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 
-export const refreshData = () => {
+export const useSeemlessRefresh = () => {
   const router = useRouter()
   router.replace(router.asPath)
 }
