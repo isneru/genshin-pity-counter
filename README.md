@@ -2,7 +2,7 @@
 
 # Full-Stack Application
 
-My goal on this project was to have a **dedicated platform to track** my pity `(number of pulls for a character, up to 90)` in Genshin Impact.
+My goal on this project was to have a **dedicated platform to track** my pity `(number of pulls for a character)` in Genshin Impact.
 
 ## You can access this project's deploy by clicking [here](http://genshin-pity-counter.vercel.app/).
 
