@@ -16,11 +16,14 @@ By building this application, I was able to improve my skills, such as:
 - [x] Next.js
 - [x] MongoDB
 - [x] Prisma
+- [x] Axios
+- [x] Zod
 
 #### Styling
 
 - [x] TailwindCSS
-- [ ] Phosphor Icons
+- [x] Phosphor Icons
+- [x] Clsx (Conditional Styling)
 - [ ] Framer-Motion
 - [ ] Responsive Design (WIP)
 
