@@ -14,7 +14,10 @@ interface CredentialsProps {
 const Login: NextPage = () => {
   const { theme } = useContext(ThemeContext)
   const { setSession, session } = useContext(SessionContext)
-  const [credentials, setCredentials] = useState<CredentialsProps>({ name: "", password: "" })
+  const [credentials, setCredentials] = useState<CredentialsProps>({
+    name: "",
+    password: ""
+  })
   const [isLoginLoading, setIsLoginLoading] = useState<boolean>(false)
   const router = useRouter()
 
@@ -49,7 +52,12 @@ const Login: NextPage = () => {
               Username
             </label>
             <input
-              onChange={e => setCredentials({ ...credentials, [e.currentTarget.name]: e.currentTarget.value })}
+              onChange={e =>
+                setCredentials({
+                  ...credentials,
+                  [e.currentTarget.name]: e.currentTarget.value
+                })
+              }
               name="name"
               type="text"
               id="name"
@@ -69,7 +77,12 @@ const Login: NextPage = () => {
               Password
             </label>
             <input
-              onChange={e => setCredentials({ ...credentials, [e.currentTarget.name]: e.currentTarget.value })}
+              onChange={e =>
+                setCredentials({
+                  ...credentials,
+                  [e.currentTarget.name]: e.currentTarget.value
+                })
+              }
               name="password"
               type="password"
               id="password"

@@ -77,7 +77,10 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
                   onChange={e =>
                     setUserData({
                       ...userData,
-                      wishes: { ...userData.wishes, [e.currentTarget.name]: e.currentTarget.valueAsNumber }
+                      wishes: {
+                        ...userData.wishes,
+                        [e.currentTarget.name]: e.currentTarget.valueAsNumber
+                      }
                     })
                   }
                   type="number"
@@ -103,7 +106,10 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
                   onChange={e =>
                     setUserData({
                       ...userData,
-                      wishes: { ...userData.wishes, [e.currentTarget.name]: e.currentTarget.valueAsNumber }
+                      wishes: {
+                        ...userData.wishes,
+                        [e.currentTarget.name]: e.currentTarget.valueAsNumber
+                      }
                     })
                   }
                   type="number"
@@ -129,7 +135,10 @@ const EditProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
                   onChange={e =>
                     setUserData({
                       ...userData,
-                      wishes: { ...userData.wishes, [e.currentTarget.name]: e.currentTarget.valueAsNumber }
+                      wishes: {
+                        ...userData.wishes,
+                        [e.currentTarget.name]: e.currentTarget.valueAsNumber
+                      }
                     })
                   }
                   type="number"

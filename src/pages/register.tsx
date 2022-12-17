@@ -14,7 +14,11 @@ interface CredentialsProps {
 
 const Register: NextPage = () => {
   const { theme } = useContext(ThemeContext)
-  const [credentials, setCredentials] = useState<CredentialsProps>({ name: "", gameUid: 0, password: "" })
+  const [credentials, setCredentials] = useState<CredentialsProps>({
+    name: "",
+    gameUid: 0,
+    password: ""
+  })
   const [isRegisterLoading, setIsRegisterLoading] = useState<boolean>(false)
   const router = useRouter()
 
@@ -47,7 +51,12 @@ const Register: NextPage = () => {
               Username
             </label>
             <input
-              onChange={e => setCredentials({ ...credentials, [e.currentTarget.name]: e.currentTarget.value })}
+              onChange={e =>
+                setCredentials({
+                  ...credentials,
+                  [e.currentTarget.name]: e.currentTarget.value
+                })
+              }
               name="name"
               type="text"
               id="name"
@@ -67,7 +76,12 @@ const Register: NextPage = () => {
               In Game UID
             </label>
             <input
-              onChange={e => setCredentials({ ...credentials, [e.currentTarget.name]: Number(e.currentTarget.value) })}
+              onChange={e =>
+                setCredentials({
+                  ...credentials,
+                  [e.currentTarget.name]: Number(e.currentTarget.value)
+                })
+              }
               name="gameUid"
               type="text"
               id="gameUid"
@@ -87,7 +101,12 @@ const Register: NextPage = () => {
               Password
             </label>
             <input
-              onChange={e => setCredentials({ ...credentials, [e.currentTarget.name]: e.currentTarget.value })}
+              onChange={e =>
+                setCredentials({
+                  ...credentials,
+                  [e.currentTarget.name]: e.currentTarget.value
+                })
+              }
               name="password"
               type="password"
               id="password"

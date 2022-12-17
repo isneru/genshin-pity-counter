@@ -23,7 +23,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(200).json({
           message: "Logged in",
           success: true,
-          data: { avatar: user.avatar, gameUid: user.gameUid, id: user.id, name: user.name }
+          data: {
+            avatar: user.avatar,
+            gameUid: user.gameUid,
+            id: user.id,
+            name: user.name
+          }
         })
       }
       throw new Error("incorrect password")
