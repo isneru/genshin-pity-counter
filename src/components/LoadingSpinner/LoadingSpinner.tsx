@@ -8,9 +8,9 @@ export const LoadingSpinner = (props: LoadingSpinnerProps) => {
   const { theme } = useContext(ThemeContext)
 
   return (
-    <div className="absolute inset-0 bg-black/50 flex items-center justify-center h-screen pointer-events-none">
+    <div className="pointer-events-none absolute inset-0 flex h-screen items-center justify-center bg-black/50">
       <div
-        className={clsx("w-[100px] h-[100px] border-[20px] rounded-full animate-spin-slow", {
+        className={clsx("h-[100px] w-[100px] animate-spin-slow rounded-full border-[20px]", {
           "border-pyro/50 border-l-pyro": theme === "pyro",
           "border-anemo/50 border-l-anemo": theme === "anemo",
           "border-hydro/50 border-l-hydro": theme === "hydro",

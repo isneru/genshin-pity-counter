@@ -15,7 +15,7 @@ export const ThemeSwitcher = () => {
       <Dialog.Root>
         <Dialog.Trigger asChild>
           <button
-            className={clsx("bg-white flex items-center justify-center rounded-full w-12 h-12 transition-colors", {
+            className={clsx("flex h-12 w-12 items-center justify-center rounded-full bg-white transition-colors", {
               "text-pyro/90 hover:text-pyro": theme === "pyro",
               "text-anemo/90 hover:text-anemo": theme === "anemo",
               "text-hydro/90 hover:text-hydro": theme === "hydro",
@@ -28,11 +28,11 @@ export const ThemeSwitcher = () => {
           </button>
         </Dialog.Trigger>
         <Dialog.Portal>
-          <Dialog.Overlay className="bg-black/60 inset-0 fixed" />
+          <Dialog.Overlay className="fixed inset-0 bg-black/60" />
           <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
             <div
               className={clsx(
-                "relative bg-black py-10 px-12 rounded-lg max-w-[90vw] shadow-lg shadow-black/25 flex flex-col items-center justify-center border-2",
+                "relative flex max-w-[90vw] flex-col items-center justify-center rounded-lg border-2 bg-black py-10 px-12 shadow-lg shadow-black/25",
                 {
                   "border-pyro": theme === "pyro",
                   "border-anemo": theme === "anemo",
@@ -47,7 +47,7 @@ export const ThemeSwitcher = () => {
                 <button
                   aria-label="Close"
                   className={clsx(
-                    "bg-black rounded w-10 h-10 flex items-center justify-center transition-colors absolute top-1 right-1",
+                    "absolute top-1 right-1 flex h-10 w-10 items-center justify-center rounded bg-black transition-colors",
                     {
                       "hover:text-pyro": theme === "pyro",
                       "hover:text-anemo": theme === "anemo",
@@ -61,21 +61,21 @@ export const ThemeSwitcher = () => {
                   <X weight="bold" size={20} />
                 </button>
               </Dialog.Close>
-              <Dialog.Title className="font-bold text-2xl mb-5 text-center">Chose Theme</Dialog.Title>
+              <Dialog.Title className="mb-5 text-center text-2xl font-bold">Chose Theme</Dialog.Title>
               <RadioGroup.Root
                 defaultValue={theme}
                 className="flex gap-5"
                 onValueChange={(value: themeValues) => setTheme(value)}>
                 {themes.map(themeValue => {
                   return (
-                    <div key={themeValue} className="flex gap-1 items-center">
+                    <div key={themeValue} className="flex items-center gap-1">
                       <RadioGroup.Item
-                        className="rounded-full w-5 h-5 bg-white hover:bg-zinc-300"
+                        className="h-5 w-5 rounded-full bg-white hover:bg-zinc-300"
                         value={themeValue}
                         id={themeValue}>
                         <RadioGroup.Indicator
                           className={clsx(
-                            "flex items-center justify-center w-full h-full relative after:block after:w-1/2 after:h-1/2 after:rounded-full",
+                            "relative flex h-full w-full items-center justify-center after:block after:h-1/2 after:w-1/2 after:rounded-full",
                             {
                               "after:bg-pyro": themeValue === "pyro",
                               "after:bg-anemo": themeValue === "anemo",

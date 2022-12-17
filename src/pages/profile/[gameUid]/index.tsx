@@ -26,10 +26,10 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
   return (
     <>
       <NextHead title={`${user.name}'s Profile`} icon="/intertwined.svg" />
-      <div className="h-screen flex justify-center items-center">
-        <div className="flex flex-col justify-center items-stretch max-w-[400px]">
+      <div className="flex h-screen items-center justify-center">
+        <div className="flex max-w-[400px] flex-col items-stretch justify-center">
           <div
-            className={clsx("py-4 px-6 rounded flex gap-4", {
+            className={clsx("flex gap-4 rounded py-4 px-6", {
               "bg-pyro/50": theme === "pyro",
               "bg-anemo/50": theme === "anemo",
               "bg-hydro/50": theme === "hydro",
@@ -39,7 +39,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
               "bg-geo/50": theme === "geo"
             })}>
             <div className="flex flex-col items-center justify-center px-10">
-              <strong className="text-2xl leading-none font-semibold">{user.name}</strong>
+              <strong className="text-2xl font-semibold leading-none">{user.name}</strong>
               <span className="text-base">{user.gameUid}</span>
               <Image
                 className={clsx("rounded-full ring-2", {
@@ -60,28 +60,28 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }: UserProfileProps) => 
             <div className="flex flex-col gap-2">
               <div className="flex flex-col">
                 <span>Event Wishes</span>
-                <span className="px-3 h-8 rounded bg-black w-full flex items-center">{user.wishes.event}</span>
+                <span className="flex h-8 w-full items-center rounded bg-black px-3">{user.wishes.event}</span>
               </div>
               <div className="flex flex-col">
                 <span>Weapon Wishes</span>
-                <span className="px-3 h-8 rounded bg-black w-full flex items-center">{user.wishes.weapon}</span>
+                <span className="flex h-8 w-full items-center rounded bg-black px-3">{user.wishes.weapon}</span>
               </div>
               <div className="flex flex-col">
                 <label htmlFor="standard">Standard Wishes</label>
-                <span className="px-3 h-8 rounded bg-black w-full flex items-center">{user.wishes.standard}</span>
+                <span className="flex h-8 w-full items-center rounded bg-black px-3">{user.wishes.standard}</span>
               </div>
             </div>
           </div>
           <Link
             href={`./${user.gameUid}/edit`}
-            className={clsx("mt-4 py-3 px-4 rounded font-semibold text-md transition-colors focus:ring-2 text-center", {
-              "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
-              "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
-              "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
-              "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
-              "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
-              "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
-              "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+            className={clsx("text-md mt-4 rounded py-3 px-4 text-center font-semibold transition-colors focus:ring-2", {
+              "bg-pyro/50 ring-pyro hover:bg-pyro": theme === "pyro",
+              "bg-anemo/50 ring-anemo hover:bg-anemo": theme === "anemo",
+              "bg-hydro/50 ring-hydro hover:bg-hydro": theme === "hydro",
+              "bg-electro/50 ring-electro hover:bg-electro": theme === "electro",
+              "bg-dendro/50 ring-dendro hover:bg-dendro": theme === "dendro",
+              "bg-cryo/50 ring-cryo hover:bg-cryo": theme === "cryo",
+              "bg-geo/50 ring-geo hover:bg-geo": theme === "geo"
             })}
             type="submit">
             Edit Profile

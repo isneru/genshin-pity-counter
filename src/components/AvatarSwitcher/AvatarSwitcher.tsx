@@ -62,11 +62,11 @@ export const AvatarSwitcher = ({ user }: UserDataProps) => {
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="bg-black/60 inset-0 fixed" />
+        <Dialog.Overlay className="fixed inset-0 bg-black/60" />
         <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
           <div
             className={clsx(
-              "relative bg-black py-10 px-12 rounded-lg max-w-[90vw] h-[90vh] shadow-lg shadow-black/25 flex flex-col items-center justify-center border-2",
+              "relative flex h-[90vh] max-w-[90vw] flex-col items-center justify-center rounded-lg border-2 bg-black py-10 px-12 shadow-lg shadow-black/25",
               {
                 "border-pyro": theme === "pyro",
                 "border-anemo": theme === "anemo",
@@ -81,7 +81,7 @@ export const AvatarSwitcher = ({ user }: UserDataProps) => {
               <button
                 aria-label="Close"
                 className={clsx(
-                  "bg-black rounded w-10 h-10 flex items-center justify-center transition-colors absolute top-1 right-1",
+                  "absolute top-1 right-1 flex h-10 w-10 items-center justify-center rounded bg-black transition-colors",
                   {
                     "hover:text-pyro": theme === "pyro",
                     "hover:text-anemo": theme === "anemo",
@@ -95,9 +95,9 @@ export const AvatarSwitcher = ({ user }: UserDataProps) => {
                 <X weight="bold" size={20} />
               </button>
             </Dialog.Close>
-            <Dialog.Title className="font-bold text-2xl mb-12 text-center">Chose Theme</Dialog.Title>
+            <Dialog.Title className="mb-12 text-center text-2xl font-bold">Chose Theme</Dialog.Title>
             <div
-              className={clsx("p-2 flex flex-wrap gap-5 justify-center overflow-y-auto", {
+              className={clsx("flex flex-wrap justify-center gap-5 overflow-y-auto p-2", {
                 "scrollbar-thumb-pyro": theme === "pyro",
                 "scrollbar-thumb-anemo": theme === "anemo",
                 "scrollbar-thumb-hydro": theme === "hydro",
@@ -109,7 +109,7 @@ export const AvatarSwitcher = ({ user }: UserDataProps) => {
               {genshinCharacters.map(character => {
                 return (
                   <button
-                    className={clsx("w-24 h-24 rounded-full ring-2 transition-shadow", {
+                    className={clsx("h-24 w-24 rounded-full ring-2 transition-shadow", {
                       "ring-white/10": character !== userData.avatar,
                       "ring-pyro": theme === "pyro",
                       "ring-anemo": theme === "anemo",

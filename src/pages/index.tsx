@@ -20,12 +20,12 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
   return (
     <>
       <NextHead title="Home" icon="/acquainted.svg" />
-      <div className="h-screen flex justify-center items-center">
-        <ul className="flex justify-center items-center flex-wrap gap-4 max-w-[80vw]">
+      <div className="flex h-screen items-center justify-center">
+        <ul className="flex max-w-[80vw] flex-wrap items-center justify-center gap-4">
           {users.map(user => (
             <li
               key={user.id}
-              className={clsx("flex flex-col w-[200px] h-20 justify-center items-center rounded transition-colors", {
+              className={clsx("flex h-20 w-[200px] flex-col items-center justify-center rounded transition-colors", {
                 "bg-pyro/50 hover:bg-pyro": theme === "pyro",
                 "bg-anemo/50 hover:bg-anemo": theme === "anemo",
                 "bg-hydro/50 hover:bg-hydro": theme === "hydro",
@@ -35,7 +35,7 @@ const Home: NextPage<DataProps> = ({ users }: DataProps) => {
                 "bg-geo/50 hover:bg-geo": theme === "geo"
               })}>
               <Link
-                className="flex flex-col justify-center items-center px-4 py-3 flex-1"
+                className="flex flex-1 flex-col items-center justify-center px-4 py-3"
                 href={`/profile/${user.gameUid}`}>
                 <span className="font-bold">{user.name ? user.name : "No Name"}</span>
                 <span>{user.gameUid}</span>

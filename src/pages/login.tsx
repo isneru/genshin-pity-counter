@@ -37,17 +37,17 @@ const Login: NextPage = () => {
   return (
     <>
       <NextHead title="Login" icon="/acquainted.svg" />
-      <div className="h-screen flex flex-col items-center justify-center">
+      <div className="flex h-screen flex-col items-center justify-center">
         <div className="text-2xl font-bold">
           <h1>Update your pity number easily!</h1>
         </div>
         <form
-          className="flex flex-col items-stretch w-full max-w-[400px] mt-10 gap-6"
+          className="mt-10 flex w-full max-w-[400px] flex-col items-stretch gap-6"
           onSubmit={e => {
             e.preventDefault()
             loginUser(credentials)
           }}>
-          <div className="font-semibold flex flex-col gap-2">
+          <div className="flex flex-col gap-2 font-semibold">
             <label htmlFor="name" className="font-semibold">
               Username
             </label>
@@ -61,18 +61,18 @@ const Login: NextPage = () => {
               name="name"
               type="text"
               id="name"
-              className={clsx("py-4 px-3 h-12 rounded w-full focus:outline-none focus:ring-2 ", {
-                "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
-                "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
-                "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
-                "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
-                "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
-                "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
-                "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+              className={clsx("h-12 w-full rounded py-4 px-3 focus:outline-none focus:ring-2 ", {
+                "bg-pyro/50 ring-pyro hover:bg-pyro": theme === "pyro",
+                "bg-anemo/50 ring-anemo hover:bg-anemo": theme === "anemo",
+                "bg-hydro/50 ring-hydro hover:bg-hydro": theme === "hydro",
+                "bg-electro/50 ring-electro hover:bg-electro": theme === "electro",
+                "bg-dendro/50 ring-dendro hover:bg-dendro": theme === "dendro",
+                "bg-cryo/50 ring-cryo hover:bg-cryo": theme === "cryo",
+                "bg-geo/50 ring-geo hover:bg-geo": theme === "geo"
               })}
             />
           </div>
-          <div className="font-semibold flex flex-col gap-2">
+          <div className="flex flex-col gap-2 font-semibold">
             <label htmlFor="password" className="font-semibold">
               Password
             </label>
@@ -86,29 +86,29 @@ const Login: NextPage = () => {
               name="password"
               type="password"
               id="password"
-              className={clsx("py-4 px-3 h-12 rounded w-full focus:outline-none focus:ring-2 ", {
-                "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
-                "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
-                "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
-                "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
-                "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
-                "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
-                "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+              className={clsx("h-12 w-full rounded py-4 px-3 focus:outline-none focus:ring-2 ", {
+                "bg-pyro/50 ring-pyro hover:bg-pyro": theme === "pyro",
+                "bg-anemo/50 ring-anemo hover:bg-anemo": theme === "anemo",
+                "bg-hydro/50 ring-hydro hover:bg-hydro": theme === "hydro",
+                "bg-electro/50 ring-electro hover:bg-electro": theme === "electro",
+                "bg-dendro/50 ring-dendro hover:bg-dendro": theme === "dendro",
+                "bg-cryo/50 ring-cryo hover:bg-cryo": theme === "cryo",
+                "bg-geo/50 ring-geo hover:bg-geo": theme === "geo"
               })}
             />
           </div>
           <button
             disabled={isLoginLoading}
             className={clsx(
-              "mt-4 py-3 px-4 rounded font-semibold text-sm w-full transition-colors focus:ring-2 flex items-center justify-center",
+              "mt-4 flex w-full items-center justify-center rounded py-3 px-4 text-sm font-semibold transition-colors focus:ring-2",
               {
-                "bg-pyro/50 hover:bg-pyro ring-pyro disabled:bg-pyro/25": theme === "pyro",
-                "bg-anemo/50 hover:bg-anemo ring-anemo disabled:bg-anemo/25": theme === "anemo",
-                "bg-hydro/50 hover:bg-hydro ring-hydro disabled:bg-hydro/25": theme === "hydro",
-                "bg-electro/50 hover:bg-electro ring-electro disabled:bg-electro/25": theme === "electro",
-                "bg-dendro/50 hover:bg-dendro ring-dendro disabled:bg-dendro/25": theme === "dendro",
-                "bg-cryo/50 hover:bg-cryo ring-cryo disabled:bg-cryo/25": theme === "cryo",
-                "bg-geo/50 hover:bg-geo ring-geo disabled:bg-geo/25": theme === "geo"
+                "bg-pyro/50 ring-pyro disabled:bg-pyro/25 hover:bg-pyro": theme === "pyro",
+                "bg-anemo/50 ring-anemo disabled:bg-anemo/25 hover:bg-anemo": theme === "anemo",
+                "bg-hydro/50 ring-hydro disabled:bg-hydro/25 hover:bg-hydro": theme === "hydro",
+                "bg-electro/50 ring-electro disabled:bg-electro/25 hover:bg-electro": theme === "electro",
+                "bg-dendro/50 ring-dendro disabled:bg-dendro/25 hover:bg-dendro": theme === "dendro",
+                "bg-cryo/50 ring-cryo disabled:bg-cryo/25 hover:bg-cryo": theme === "cryo",
+                "bg-geo/50 ring-geo disabled:bg-geo/25 hover:bg-geo": theme === "geo"
               }
             )}
             type="submit">

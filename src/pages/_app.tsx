@@ -7,7 +7,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <SessionProvider>
       <ThemeProvider>
-        <div className="h-screen max-h-screen flex flex-col">
+        <div className="flex h-screen max-h-screen flex-col">
           <Navbar />
           <Component {...pageProps} />
           <ThemeSwitcher />

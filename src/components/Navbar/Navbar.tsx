@@ -13,27 +13,27 @@ export const Navbar = () => {
   }
 
   return (
-    <header className="py-6 px-6 h-20 w-full flex justify-between items-center">
+    <header className="flex h-20 w-full items-center justify-between py-6 px-6">
       <div className="flex items-center">
         <Link href="/">
           <Image priority width={150} height={45} src="/logo.svg" alt="Logo" />
         </Link>
       </div>
-      <div className="max-w-sm flex-1 flex gap-4">
+      <div className="flex max-w-sm flex-1 gap-4">
         {session ? (
           <>
             <span className="text-center">Welcome back, {session.user.name}</span>
             <button
               className={clsx(
-                "py-2 px-3 rounded font-semibold text-white text-sm w-full transition-colors focus:ring-2 text-center",
+                "w-full rounded py-2 px-3 text-center text-sm font-semibold text-white transition-colors focus:ring-2",
                 {
-                  "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
-                  "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
-                  "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
-                  "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
-                  "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
-                  "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
-                  "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+                  "bg-pyro/50 ring-pyro hover:bg-pyro": theme === "pyro",
+                  "bg-anemo/50 ring-anemo hover:bg-anemo": theme === "anemo",
+                  "bg-hydro/50 ring-hydro hover:bg-hydro": theme === "hydro",
+                  "bg-electro/50 ring-electro hover:bg-electro": theme === "electro",
+                  "bg-dendro/50 ring-dendro hover:bg-dendro": theme === "dendro",
+                  "bg-cryo/50 ring-cryo hover:bg-cryo": theme === "cryo",
+                  "bg-geo/50 ring-geo hover:bg-geo": theme === "geo"
                 }
               )}
               onClick={() => logOut()}>
@@ -44,15 +44,15 @@ export const Navbar = () => {
           <>
             <Link
               className={clsx(
-                "py-2 px-3 rounded font-semibold text-white text-sm w-full transition-colors focus:ring-2 text-center",
+                "w-full rounded py-2 px-3 text-center text-sm font-semibold text-white transition-colors focus:ring-2",
                 {
-                  "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
-                  "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
-                  "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
-                  "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
-                  "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
-                  "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
-                  "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+                  "bg-pyro/50 ring-pyro hover:bg-pyro": theme === "pyro",
+                  "bg-anemo/50 ring-anemo hover:bg-anemo": theme === "anemo",
+                  "bg-hydro/50 ring-hydro hover:bg-hydro": theme === "hydro",
+                  "bg-electro/50 ring-electro hover:bg-electro": theme === "electro",
+                  "bg-dendro/50 ring-dendro hover:bg-dendro": theme === "dendro",
+                  "bg-cryo/50 ring-cryo hover:bg-cryo": theme === "cryo",
+                  "bg-geo/50 ring-geo hover:bg-geo": theme === "geo"
                 }
               )}
               href="/register">
@@ -60,15 +60,15 @@ export const Navbar = () => {
             </Link>
             <Link
               className={clsx(
-                "py-2 px-3 rounded font-semibold text-white text-sm w-full transition-colors focus:ring-2 text-center",
+                "w-full rounded py-2 px-3 text-center text-sm font-semibold text-white transition-colors focus:ring-2",
                 {
-                  "bg-pyro/50 hover:bg-pyro ring-pyro": theme === "pyro",
-                  "bg-anemo/50 hover:bg-anemo ring-anemo": theme === "anemo",
-                  "bg-hydro/50 hover:bg-hydro ring-hydro": theme === "hydro",
-                  "bg-electro/50 hover:bg-electro ring-electro": theme === "electro",
-                  "bg-dendro/50 hover:bg-dendro ring-dendro": theme === "dendro",
-                  "bg-cryo/50 hover:bg-cryo ring-cryo": theme === "cryo",
-                  "bg-geo/50 hover:bg-geo ring-geo": theme === "geo"
+                  "bg-pyro/50 ring-pyro hover:bg-pyro": theme === "pyro",
+                  "bg-anemo/50 ring-anemo hover:bg-anemo": theme === "anemo",
+                  "bg-hydro/50 ring-hydro hover:bg-hydro": theme === "hydro",
+                  "bg-electro/50 ring-electro hover:bg-electro": theme === "electro",
+                  "bg-dendro/50 ring-dendro hover:bg-dendro": theme === "dendro",
+                  "bg-cryo/50 ring-cryo hover:bg-cryo": theme === "cryo",
+                  "bg-geo/50 ring-geo hover:bg-geo": theme === "geo"
                 }
               )}
               href="/login">
